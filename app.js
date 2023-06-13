@@ -19,7 +19,10 @@ app.use(
   cors({
     credentials: true,
     // origin: "*",
-    origin: "http://localhost:3000",
+    origin: [
+      "http://localhost:3000",
+      "https://a5--celebrated-zabaione-204450.netlify.app",
+    ],
   })
 );
 
