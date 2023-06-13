@@ -1,3 +1,4 @@
+import * as usersDao from "./users-dao.js";
 import people from "./users.js";
 let users = people;
 
@@ -16,6 +17,7 @@ const findUsers = (req, res) => {
     res.json(usersOfType);
     return;
   }
+  const users = usersDao.findAllUsers();
   res.json(users);
 };
 
