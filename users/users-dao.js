@@ -33,10 +33,12 @@ export const findUserByCredentials = (username, password) => {
 export const createUser = (user) => {
   console.log("user created");
   const timestamp = Date.now();
-  users.push({ ...user, _id: timestamp.toString() });
-
+  const newUser = { ...user, _id: timestamp.toString() };
+  users.push(newUser);
+  //   return { ...user, _id: timestamp.toString() };
   //   users.push(usr);
-  console.log(users);
+  return newUser;
+  //   console.log(users);
 };
 
 export const updateUser = (uid, user) => {
