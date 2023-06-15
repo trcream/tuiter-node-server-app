@@ -6,14 +6,26 @@ import TuitController from "./controllers/tuits/tuits-controller.js";
 import session from "express-session";
 import AuthController from "./users/auth-controller.js";
 
+import mongoose from "mongoose";
+// Connect to the database tuiter
+//mongoose.connect("mongodb://localhost:27017/tuiter");
+// const connectionString =
+//   process.env.DB_CONNECTION_STRING || "mongodb://localhost:27017/tuiter";
+const connectionString =
+  "mongodb+srv://trentoncreamer:supersecretpassword@cluster0.pgpdswc.mongodb.net/";
+console.log(connectionString + " is the connection string");
+mongoose.connect(connectionString);
+
+mongoose.connection.once("connected", () => {
+  console.log("MongoDB connected successfully!");
+});
+
 const app = express();
 app.use(
   session({
     secret: "any string",
     resave: false,
-    // saveUninitialized: true,
-    saveUninitialized: false,
-    store: new session.MemoryStore(),
+    saveUninitialized: true,
   })
 );
 
