@@ -36,6 +36,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://a5--celebrated-zabaione-204450.netlify.app",
+      "https://a6--celebrated-zabaione-204450.netlify.app",
     ],
   })
 );
