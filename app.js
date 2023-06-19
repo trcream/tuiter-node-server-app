@@ -21,14 +21,7 @@ mongoose.connection.once("connected", () => {
 });
 
 const app = express();
-app.use(
-  session({
-    secret: "any string",
-    resave: false,
-    saveUninitialized: false,
-    cookie: { sameSite: "none", secure: true },
-  })
-);
+app.set("trust proxy", 1);
 
 app.use(
   cors({
@@ -43,16 +36,18 @@ app.use(
   })
 );
 
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-//   res.header("Access-Control-Allow-Credentials", "true");
-//   next();
-// });
+app.use(
+  session({
+    secret: "any string",
+    resave: false,
+    proxy: true,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: "none",
+      secure: true,
+    },
+  })
+);
 
 app.use(express.json());
 
