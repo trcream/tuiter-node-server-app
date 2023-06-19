@@ -25,7 +25,8 @@ app.use(
   session({
     secret: "any string",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: { sameSite: "none", secure: true },
   })
 );
 
@@ -37,6 +38,7 @@ app.use(
       "http://localhost:3000",
       "https://a5--celebrated-zabaione-204450.netlify.app",
       "https://a6--celebrated-zabaione-204450.netlify.app",
+      "https://trcream-tuiter-node-server-app.herokuapp.com/",
     ],
   })
 );
